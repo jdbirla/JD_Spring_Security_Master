@@ -205,10 +205,23 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.0</version>
 		</dependency>
+		
 ```
 
- - create /authentication api endpoint which are accept the user id and password and return the JWT token as repsone
- - Intercept the all incoming request except the /authenication api 
+  - create /authentication api endpoint which are accept the user id and password and return the JWT token as repsone
+  - Intercept the all incoming request except the /authenication api and anyreques authneticated 
+  ```
+      protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeRequests().antMatchers("/authenticate").permitAll()
+                .anyRequest().authenticated()
+                .and().sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+  
+  ```
   - exract the JWT from header and validate
   - After validation sety into the SecurityContext 
   - First authenticate user details based on username and pass 
@@ -217,6 +230,7 @@
   - Get Generate JWT token and pass in reponse for authentication api endpoint
   - Create filter for intercept all requests
   - Extend `OncePerRequestFilter` and override doFilterInternal 
-  - 
+  - in filter get the JWT tokent exreact the username and validate tokent get userdetails obj and set userdetails obj into UsernamePasswordAuthenticationToken and set authenticationToken token into SecurityContextHolder after put filterChain.doFilter(request, response); for moving farword the request 
+   - 
 
  
