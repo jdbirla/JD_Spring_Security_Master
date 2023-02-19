@@ -193,7 +193,8 @@
   - JWT process flow
   - ![image](https://user-images.githubusercontent.com/69948118/219940492-c4ef73f5-097c-47f2-8022-30d8393c56e0.png)
   - We need to add 2 dependcies 
-````
+  
+```
     <dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
@@ -231,6 +232,29 @@
   - Create filter for intercept all requests
   - Extend `OncePerRequestFilter` and override doFilterInternal 
   - in filter get the JWT tokent exreact the username and validate tokent get userdetails obj and set userdetails obj into UsernamePasswordAuthenticationToken and set authenticationToken token into SecurityContextHolder after put filterChain.doFilter(request, response); for moving farword the request 
-   - 
+  
+## OAuth 
+- OAuth is for Authorization
+- Authorization between services 
+- Access delegation
+- OAuthFlow
+- Resource :  Proteced resource
+- Resource Owenr :  Owner who is giving permission
+- Resource Server : Google
+- Client  :  requested on behalf of the resource owner
+- Authorization server :  who is issuing the access tokens
+- Oauth Flow 1 :  giving authtorization token to client then client again sending auth token to auth server the auth server giviong access toket to clien now client will give this tocke to resourcer server
+- Ouath Flow 2 :  Implicit flow : Auth server giving access token directly
+- Oauth Flow 3 :  Client Credentials Flow :  when client is well trusted in case of microservice one service is calling to another service
+- service 1 will get the access token form auth server then this access token will be send to the service 2 
+
+##  Spring security Facebook login in using OAuth (for authentication)
+- Add depoendency `spring-security-oauth2-autconfiguration`
+- @EnableOauth2Sso annotation on main spring boot applicaiton
+- create app in facebbook , google or github 
+- ![image](https://user-images.githubusercontent.com/69948118/219941785-09c74079-69ba-4f16-bd8e-51d377e934eb.png)
+-  set configuration propeties 
+-  Once will hit the application URL it will redirec to facebook for permission allow then redirect to application URL
+
 
  
