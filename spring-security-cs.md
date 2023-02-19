@@ -167,6 +167,56 @@
     
  ```
 ## JWT Json Web Tokens
+  - JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
+  -   JSON Web Token (JWT) is a compact, URL-safe means of representing
+   claims to be transferred between two parties.  The claims in a JWT
+   are encoded as a JSON object that is used as the payload of a JSON
+   Web Signature (JWS) structure or as the plaintext of a JSON Web
+   Encryption (JWE) structure, enabling the claims to be digitally
+   signed or integrity protected with a Message Authentication Code
+   (MAC) and/or encrypted.
+  -  There are type of authorization strategies
+      - Session Token
+      - JSON Web Token
+  - As HTTP is stateless protocol 
+  - SessionID + Cookies is most popular mechnaism for authorization 
+  - In first time authentication server generate token (session id) and gives as response user browser set this sessionid in cookies or header for subsquent request and server will validate the same session id access for the other resources
+  - This mechanism was good if we have monolothic and only on instance of serveris running but if our app has many instances and diffrenet request is going to difenrenct instance then othe instance are not going to recognize the session id and invalidate that
+  - For this we have difference solution like sessionaffiniti which will forward request to same instance for the same user but in this case scalling not porper implemented
+  - Second solution is that create Shared case in Redis and stor session information in one place and each instance will get the session info from here
+  - Now JWT comes into picture and solve this issue using JWT token
+  - which contain some information about user which will genetate from server and this whole information not just id and in every subsuent request this token will be passed which can be validated by any instance of the application
+  - This JWT has 3 part Header , Payload and signature https://jwt.io/
+  - Header :  has info about which type = 'jwt'  and encrptio algo "HS256"
+  - Payload :  This has info about the user like id, username , expiration etc
+  - Signature :  its auto generation using hearder , payload and secret it will change if you payload ot header has been changed
+  - JWT process flow
+  - ![image](https://user-images.githubusercontent.com/69948118/219940492-c4ef73f5-097c-47f2-8022-30d8393c56e0.png)
+  - We need to add 2 dependcies 
+````
+    <dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
 
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+```
 
+ - create /authentication api endpoint which are accept the user id and password and return the JWT token as repsone
+ - Intercept the all incoming request except the /authenication api 
+  - exract the JWT from header and validate
+  - After validation sety into the SecurityContext 
+  - First authenticate user details based on username and pass 
+  - Once authenticatio done get UserDetails Object 
+  - Pass UserDetails Object to JWTUtill for generate token
+  - Get Generate JWT token and pass in reponse for authentication api endpoint
+  - Create filter for intercept all requests
+  - Extend `OncePerRequestFilter` and override doFilterInternal 
+  - 
 
+ 
