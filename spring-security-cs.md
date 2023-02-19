@@ -93,7 +93,80 @@
 
 ```
 ---
+## JDBC Authentication with spring security
+  - Setup datasourcer it might be in-memory or my sql , oracle in property file and inject DataSource object into cofigure methods
+  - ![image](https://user-images.githubusercontent.com/69948118/219939189-e09e2290-ae75-4c8a-a0db-6d8555387fe2.png)
+  - We can create our own table strucuter but we have to provide like usernae, password , enable and required information for authroties and we can put custom query in cofigure method to fetch data from our custom tables
+  -![image](https://user-images.githubusercontent.com/69948118/219939305-aee22a80-f75a-4589-9ae3-ce2542e33eb6.png)
 
+## JPA Authentication with spring security
+- create user table in mysqldb
+- AuthenticationProvided -> UserDetailsService -> loadUserByUsername() -> JPARepository -> findByUserName() from DB
+- ![image](https://user-images.githubusercontent.com/69948118/219939501-96eb5cbe-37ee-4947-b16b-20b21f167c25.png)
+- ```java
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Optional<User> byUserName = userRepository.findByUserName(username);
+        byUserName.orElseThrow(() -> new UsernameNotFoundException("user not found : "+username));
+        return byUserName.map(MyUserDetails::new).get();
+
+    }
+    ```
+    ```java
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
+
+    }
+    ```
+
+## Sping Boot Security with LDAP
+
+    - LDAP : Lightweight Directory Access Protocol which mains data into tree hirarchay
+    - We need dependcey for security for the LDAP `spring-security-ldap`
+    - As we are running ladp locally we need to setup ladpa also for that we need to add dependecny `unboundid-ldapsdk`
+    -  User information store in ldap file extension is `ldif`
+    
+ ```
+		      dn: uid=ben,ou=people,dc=springframework,dc=org
+		objectclass: top
+		objectclass: person
+		objectclass: organizationalPerson
+		objectclass: inetOrgPerson
+		cn: Ben Alex
+		sn: Alex
+		uid: ben
+		userPassword: $2a$10$c6bSeWPhg06xB1lvmaWNNe4NROmZiSpYhlocU/98HNr2MhIOiSt36
+		
+```
+```java
+   
+           @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .ldapAuthentication()
+                .userDnPatterns("uid={0},ou=people")
+                .groupSearchBase("ou=groups")
+                .contextSource()
+                .url("ldap://localhost:8389/dc=springframework,dc=org")
+                .and()
+                .passwordCompare()
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .passwordAttribute("userPassword");
+
+
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests()
+                .anyRequest()
+                .authenticated()
+                .and().formLogin();
+    }
+    
+ ```
+## JWT Json Web Tokens
 
 
 
