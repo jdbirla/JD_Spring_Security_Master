@@ -104,7 +104,7 @@
 - create user table in mysqldb
 - AuthenticationProvided -> UserDetailsService -> loadUserByUsername() -> JPARepository -> findByUserName() from DB
 - ![image](https://user-images.githubusercontent.com/69948118/219939501-96eb5cbe-37ee-4947-b16b-20b21f167c25.png)
-- ```java
+```java
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Optional<User> byUserName = userRepository.findByUserName(username);
@@ -112,21 +112,21 @@
         return byUserName.map(MyUserDetails::new).get();
 
     }
-    ```
-    ```java
+```
+```java
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
 
     }
-    ```
+```
 
 ## Sping Boot Security with LDAP
 
-    - LDAP : Lightweight Directory Access Protocol which mains data into tree hirarchay
-    - We need dependcey for security for the LDAP `spring-security-ldap`
-    - As we are running ladp locally we need to setup ladpa also for that we need to add dependecny `unboundid-ldapsdk`
-    -  User information store in ldap file extension is `ldif`
+  - LDAP : Lightweight Directory Access Protocol which mains data into tree hirarchay
+  - We need dependcey for security for the LDAP `spring-security-ldap`
+  - As we are running ladp locally we need to setup ladpa also for that we need to add dependecny `unboundid-ldapsdk`
+ -  User information store in ldap file extension is `ldif`
     
  ```
 		      dn: uid=ben,ou=people,dc=springframework,dc=org
@@ -166,7 +166,7 @@
                 .and().formLogin();
     }
     
- ```
+```
 ## JWT Json Web Tokens
   - JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
   -   JSON Web Token (JWT) is a compact, URL-safe means of representing
