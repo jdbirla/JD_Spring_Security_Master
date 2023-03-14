@@ -35,7 +35,8 @@
 ### Authorization
  - In-memory authentication configuration
  - AuthenticationManger provides the configure methos using HttpSecurity `protected void configure(HttpSecurity http) throws Exception `
- - ```  @Override
+```java
+@Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .antMatchers("/admin").hasRole("ADMIN")
@@ -43,21 +44,21 @@
                 .antMatchers("/").permitAll()
                 .and().formLogin();
     }
-    ```
+```
 ## How Spring security works
 - Spring security add spring security filter before application and it intercept each request
 - ![image](https://user-images.githubusercontent.com/69948118/219938339-ba454d6d-25f3-410b-810e-de6884e4532a.png)
 -  AuthenticationProvider Interface has authenticate() method which takes Authentication object as arguement and return Authentication object
 
-	```java
+```java
 	public interface AuthenticationProvider {
 	    Authentication authenticate(Authentication authentication) throws AuthenticationException;
 
 	    boolean supports(Class<?> authentication);
 	}
-	```
+```
   - Authentication interface hasall details about user 
-     ```java
+```java
 	     public interface Authentication extends Principal, Serializable {
 	    Collection<? extends GrantedAuthority> getAuthorities();
 
