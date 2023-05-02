@@ -19,6 +19,7 @@
 ### Roles : Group of Authorities ROLE_ADMIN
 
 ---
+![image](https://user-images.githubusercontent.com/69948118/235628187-01a8f491-54af-4c06-ad11-3d54eff7dedc.png)
 
 # Basic or Default Spring Security 
  - Adding just `spring-boot-starter-security`
