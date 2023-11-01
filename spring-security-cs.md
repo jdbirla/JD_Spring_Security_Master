@@ -265,6 +265,9 @@
 - **JWTUtil.java** :  This class will give all utilities methods for token like generating the signed tokens, validating tokens
 - **SecurityFilterChainConfig** : Configuraiton for permits and denied request
 - **SecurityConfig** : This just a confiuration class for bean definition like PasswordEncoder, AuthenticationManager, AuthenticationProvider
+- **JWTAuthenticationFilter** : This calls extendeds `OncePerRequestFilter` , in this will get the subject and load uderdetials from db and call validate token method using `jwt` and `userdetailsservice` create `UsernamePasswordAuthenticationToken` ans set into `SecurityContextHolder` and go to next filter
+- 
+
 
 ### Security filter chain
 ![image](https://github.com/jdbirla/JD_FSP/assets/69948118/509c6c37-5f9c-48db-ad57-ba782575e9f2)
