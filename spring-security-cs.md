@@ -19,9 +19,8 @@
 ### Roles : Group of Authorities ROLE_ADMIN
 
 ---
-![image](https://user-images.githubusercontent.com/69948118/235628187-01a8f491-54af-4c06-ad11-3d54eff7dedc.png)
-
-# Basic or Default Spring Security 
+## JavaBrain
+## Basic or Default Spring Security 
  - Adding just `spring-boot-starter-security`
  - Adds mandatory authentication for URLs
  - Add login form
@@ -94,7 +93,7 @@
 	}
 
 ```
----
+
 ## JDBC Authentication with spring security
   - Setup datasourcer it might be in-memory or my sql , oracle in property file and inject DataSource object into cofigure methods
   - ![image](https://user-images.githubusercontent.com/69948118/219939189-e09e2290-ae75-4c8a-a0db-6d8555387fe2.png)
@@ -257,6 +256,10 @@
 - ![image](https://user-images.githubusercontent.com/69948118/219941785-09c74079-69ba-4f16-bd8e-51d377e934eb.png)
 -  set configuration propeties 
 -  Once will hit the application URL it will redirec to facebook for permission allow then redirect to application URL
+
+---
+## Amigoscode
+
 
 
  
