@@ -266,6 +266,9 @@
 ![image](https://github.com/jdbirla/JD_FSP/assets/69948118/1d352672-6a66-4084-ac88-fc3864715e23)
 ![image](https://github.com/jdbirla/JD_FSP/assets/69948118/c8190c95-e9ac-4b95-8f86-2047c34cedf7)
 
+### Classed required for JWT implementation
+- **JWTUtil.java** :  This class will give all utilities methods for token like generating the signed tokens, validating tokens
+- 
 
 
  
