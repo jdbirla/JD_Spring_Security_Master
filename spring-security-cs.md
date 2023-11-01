@@ -256,7 +256,16 @@
 
 ---
 ## Amigoscode
+- https://docs.spring.io/spring-security/reference/index.html
 
+![image](https://github.com/jdbirla/JD_FSP/assets/69948118/33ebb274-778d-44e6-9820-b3e5359b1644)
+![image](https://github.com/jdbirla/JD_FSP/assets/69948118/34153947-6603-4ce7-9a5c-cf797592766b)
+
+### Security filter chain
+![image](https://github.com/jdbirla/JD_FSP/assets/69948118/509c6c37-5f9c-48db-ad57-ba782575e9f2)
+![image](https://github.com/jdbirla/JD_FSP/assets/69948118/1d352672-6a66-4084-ac88-fc3864715e23)
+![image](https://github.com/jdbirla/JD_FSP/assets/69948118/c8190c95-e9ac-4b95-8f86-2047c34cedf7)
+![image](https://github.com/jdbirla/JD_FSP/assets/69948118/1956835e-1dab-475a-9895-751f736faf65)
 
 
  
