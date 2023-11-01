@@ -267,9 +267,19 @@
 - **SecurityFilterChainConfig** : Configuraiton for permits and denied request
 - **SecurityConfig** : This just a confiuration class for bean definition like PasswordEncoder, AuthenticationManager, AuthenticationProvider
 - **JWTAuthenticationFilter** : This calls extendeds `OncePerRequestFilter` , in this will get the subject and load uderdetials from db and call validate token method using `jwt` and `userdetailsservice` create `UsernamePasswordAuthenticationToken` ans set into `SecurityContextHolder` and go to next filter
-- 
+- **DelegatedAuthEntryPoint** : This class implements `implements AuthenticationEntryPoint` , it resolves the exception like when resource not found should give the forbidden exception instead it will give an actual thrown exception.
+- **CorsConfig** : This class enable CORS
+- **AuthenticationService** : This is a service for`auth` which will give generate token for subsquent requests 
+```java
+ Authentication authentication = authenticationManager.authenticate(
+        new UsernamePasswordAuthenticationToken(request.username(), request.password()));
 
+    Customer principal = (Customer) authentication.getPrincipal();
+    CustomerDTO customerDTO = customerDTOMapper.apply(principal);
 
+    String jwtToken = jwtUtil.issueToken(customerDTO.username(), customerDTO.roles());
+    return new AuthenticationResponse(jwtToken, customerDTO);
+```
 ### Security filter chain
 ![image](https://github.com/jdbirla/JD_FSP/assets/69948118/509c6c37-5f9c-48db-ad57-ba782575e9f2)
 ![image](https://github.com/jdbirla/JD_FSP/assets/69948118/1d352672-6a66-4084-ac88-fc3864715e23)
