@@ -257,6 +257,7 @@
 ---
 ## Amigoscode
 - https://docs.spring.io/spring-security/reference/index.html
+- understand spring security architecture : https://amigoscode.com/courses/full-stack-professional/lectures/45688270
 ### JWT
 ![image](https://github.com/jdbirla/JD_FSP/assets/69948118/33ebb274-778d-44e6-9820-b3e5359b1644)
 ![image](https://github.com/jdbirla/JD_FSP/assets/69948118/34153947-6603-4ce7-9a5c-cf797592766b)
