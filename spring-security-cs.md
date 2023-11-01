@@ -264,7 +264,7 @@
 ### Classed required for JWT implementation
 - **JWTUtil.java** :  This class will give all utilities methods for token like generating the signed tokens, validating tokens
 - **SecurityFilterChainConfig** : Configuraiton for permits and denied request
-
+- **SecurityConfig** : This just a confiuration class for bean definition like PasswordEncoder, AuthenticationManager, AuthenticationProvider
 
 ### Security filter chain
 ![image](https://github.com/jdbirla/JD_FSP/assets/69948118/509c6c37-5f9c-48db-ad57-ba782575e9f2)
