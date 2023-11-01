@@ -1,26 +1,23 @@
 # Spring-security-cs
 
-## Core Concept in spring security
-### Authentication :  Who are you , can you prove that's you , Who is this user?
-   - #### Knowledge based authenticaion : 
+ **Core Concept in spring security**
+- **Authentication** :  Who are you , can you prove that's you , Who is this user?
+   - Knowledge based authenticaion : 
    		- Password
    		- Pin code
    		- Answer to a secret / personal question
-   - #### Possession based authenticaion : 
+   -  Possession based authenticaion : 
    		- Phone/ text Message
    		- Key Cards and badges
    		- Access token device
-### Authorization : Can this user do this / Are they allowed to do this?
-
-### Principal : Currently loggern in user
-
-### Granted Authority : What they can do
-
-### Roles : Group of Authorities ROLE_ADMIN
+- **Authorization** : Can this user do this / Are they allowed to do this?
+- **Principal** : Currently loggern in user
+- **Granted Authority** : What they can do
+- **Roles** : Group of Authorities ROLE_ADMIN
 
 ---
 ## JavaBrain
-## Basic or Default Spring Security 
+### Basic or Default Spring Security 
  - Adding just `spring-boot-starter-security`
  - Adds mandatory authentication for URLs
  - Add login form
@@ -28,11 +25,11 @@
  - Create a user and sets a default password
  - We can configure user and password in properties files
 
-## How Spring security configuration 
-### Authentication
+### How Spring security configuration 
+#### Authentication
  - Created spring security configuration using extending WebSecurityConfigurerAdapter and overried configure method
  - AuthenticationManger provides the configure methos using AuthenticationMangerBuilder `protected void configure(AuthenticationManagerBuilder auth) throws Exception`
-### Authorization
+#### Authorization
  - In-memory authentication configuration
  - AuthenticationManger provides the configure methos using HttpSecurity `protected void configure(HttpSecurity http) throws Exception `
 ```java
@@ -45,7 +42,7 @@
                 .and().formLogin();
     }
 ```
-## How Spring security works
+### How Spring security works
 - Spring security add spring security filter before application and it intercept each request
 - ![image](https://user-images.githubusercontent.com/69948118/219938339-ba454d6d-25f3-410b-810e-de6884e4532a.png)
 -  AuthenticationProvider Interface has authenticate() method which takes Authentication object as arguement and return Authentication object
@@ -94,13 +91,13 @@
 
 ```
 
-## JDBC Authentication with spring security
+### JDBC Authentication with spring security
   - Setup datasourcer it might be in-memory or my sql , oracle in property file and inject DataSource object into cofigure methods
   - ![image](https://user-images.githubusercontent.com/69948118/219939189-e09e2290-ae75-4c8a-a0db-6d8555387fe2.png)
   - We can create our own table strucuter but we have to provide like usernae, password , enable and required information for authroties and we can put custom query in cofigure method to fetch data from our custom tables
   -![image](https://user-images.githubusercontent.com/69948118/219939305-aee22a80-f75a-4589-9ae3-ce2542e33eb6.png)
 
-## JPA Authentication with spring security
+### JPA Authentication with spring security
 - create user table in mysqldb
 - AuthenticationProvided -> UserDetailsService -> loadUserByUsername() -> JPARepository -> findByUserName() from DB
 - ![image](https://user-images.githubusercontent.com/69948118/219939501-96eb5cbe-37ee-4947-b16b-20b21f167c25.png)
@@ -121,7 +118,7 @@
     }
 ```
 
-## Sping Boot Security with LDAP
+### Sping Boot Security with LDAP
 
   - LDAP : Lightweight Directory Access Protocol which mains data into tree hirarchay
   - We need dependcey for security for the LDAP `spring-security-ldap`
@@ -167,7 +164,7 @@
     }
     
 ```
-## JWT Json Web Tokens
+### JWT Json Web Tokens
   - JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
   -   JSON Web Token (JWT) is a compact, URL-safe means of representing
    claims to be transferred between two parties.  The claims in a JWT
@@ -234,7 +231,7 @@
   - Extend `OncePerRequestFilter` and override doFilterInternal 
   - in filter get the JWT tokent exreact the username and validate tokent get userdetails obj and set userdetails obj into UsernamePasswordAuthenticationToken and set authenticationToken token into SecurityContextHolder after put filterChain.doFilter(request, response); for moving farword the request 
   
-## OAuth 
+### OAuth 
 - OAuth is for Authorization
 - Authorization between services 
 - Access delegation
@@ -249,7 +246,7 @@
 - Oauth Flow 3 :  Client Credentials Flow :  when client is well trusted in case of microservice one service is calling to another service
 - service 1 will get the access token form auth server then this access token will be send to the service 2 
 
-##  Spring security Facebook login in using OAuth (for authentication)
+###  Spring security Facebook login in using OAuth (for authentication)
 - Add depoendency `spring-security-oauth2-autconfiguration`
 - @EnableOauth2Sso annotation on main spring boot applicaiton
 - create app in facebbook , google or github 
