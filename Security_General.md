@@ -52,6 +52,13 @@
 ![image](https://github.com/jdbirla/JD_Spring_Security_Master/assets/69948118/b5532b43-0838-43e6-aca1-fdabd0e861f0)
 ![image](https://github.com/jdbirla/JD_Spring_Security_Master/assets/69948118/0766f988-80ec-4307-907e-3aad104ccfaa)
 ![image](https://github.com/jdbirla/JD_Spring_Security_Master/assets/69948118/d528b89f-1224-4b85-a0f5-91afd19909d6)
+## Summary
+![image](https://github.com/jdbirla/JD_Spring_Security_Master/assets/69948118/8eb000c4-c0bb-4c4b-a3cb-ab0868f86408)
+![image](https://github.com/jdbirla/JD_Spring_Security_Master/assets/69948118/b22986fb-6a9e-412d-ad87-911be492fdc8)
+![image](https://github.com/jdbirla/JD_Spring_Security_Master/assets/69948118/19e96952-c930-429c-a491-3d6e10f5878a)
+![image](https://github.com/jdbirla/JD_Spring_Security_Master/assets/69948118/18e3d988-88be-4e9a-b958-287a867b48f4)
+![image](https://github.com/jdbirla/JD_Spring_Security_Master/assets/69948118/2a84fefd-0bfd-4138-86ad-040caef25eef)
+![Uploading image.png…]()
 
 
 
